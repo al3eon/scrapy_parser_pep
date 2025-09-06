@@ -1,7 +1,10 @@
+from pep_parse.spiders.constants import RESULTS_DIR
+
 BOT_NAME = 'pep_parse'
 
-SPIDER_MODULES = ['pep_parse.spiders']
-NEWSPIDER_MODULE = 'pep_parse.spiders'
+SPIDER_NAME = 'pep_parse.spiders'
+NEWSPIDER_MODULE = SPIDER_NAME
+SPIDER_MODULES = [SPIDER_NAME]
 
 ROBOTSTXT_OBEY = True
 
@@ -10,7 +13,7 @@ ITEM_PIPELINES = {
 }
 
 FEEDS = {
-    'results/pep_%(time)s.csv': {
+    f'{RESULTS_DIR}/pep_%(time)s.csv': {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
     },
